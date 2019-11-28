@@ -38,11 +38,13 @@ class BookController extends Controller
     /**
      * @param Request $request
      * @param Book $book
-     * @return bool
+     * @return Book
      */
-    public function update(Request $request, Book $book): bool
+    public function update(Request $request, Book $book): Book
     {
-        return $book->update($request->all());
+        $book->update($request->all());
+
+        return $book;
     }
 
     /**
