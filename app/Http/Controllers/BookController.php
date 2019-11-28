@@ -28,14 +28,12 @@ class BookController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
+     * @param Book $book
+     * @return Book
      */
-    public function show(Book $book)
+    public function show(Book $book): Book
     {
-        //
+        return $book;
     }
 
     /**
