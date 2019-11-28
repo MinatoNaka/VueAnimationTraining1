@@ -2,7 +2,9 @@
     <div class="container">
         <nav class="navbar navbar-dark bg-dark mb-3">
             <span class="navbar-brand mb-0 h1">SPA Training1</span>
-            <button class="btn btn-success">ADD</button>
+            <router-link v-bind:to="{name: 'book.create'}">
+                <button class="btn btn-success">ADD</button>
+            </router-link>
         </nav>
         <table class="table table-hover">
             <thead class="thead-light">
