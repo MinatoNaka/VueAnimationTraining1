@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
@@ -45,13 +46,12 @@ class BookController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
+     * @param Book $book
+     * @return bool
+     * @throws Exception
      */
-    public function destroy(Book $book)
+    public function destroy(Book $book): bool
     {
-        //
+        return $book->delete();
     }
 }
