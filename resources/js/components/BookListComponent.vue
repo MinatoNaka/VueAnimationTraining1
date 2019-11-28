@@ -18,50 +18,18 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Book1</td>
-                <td>Author1</td>
-                <td>1000</td>
+            <tr v-for="book in books">
+                <th scope="row">{{ book.id }}</th>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.price }}</td>
                 <td>
-                    <router-link v-bind:to="{name: 'book.show', params: {bookId: 1}}">
+                    <router-link v-bind:to="{name: 'book.show', params: {bookId: book.id}}">
                         <button class="btn btn-success">Show</button>
                     </router-link>
                 </td>
                 <td>
-                    <router-link v-bind:to="{name: 'book.edit', params: {bookId: 1}}">
-                        <button class="btn btn-success">Edit</button>
-                    </router-link>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Book2</td>
-                <td>Author2</td>
-                <td>2000</td>
-                <td>
-                    <router-link v-bind:to="{name: 'book.show', params: {bookId: 2}}">
-                        <button class="btn btn-success">Show</button>
-                    </router-link>
-                </td>
-                <td>
-                    <router-link v-bind:to="{name: 'book.edit', params: {bookId: 2}}">
-                        <button class="btn btn-success">Edit</button>
-                    </router-link>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Book3</td>
-                <td>Author3</td>
-                <td>3000</td>
-                <td>
-                    <router-link v-bind:to="{name: 'book.show', params: {bookId: 3}}">
-                        <button class="btn btn-success">Show</button>
-                    </router-link>
-                </td>
-                <td>
-                    <router-link v-bind:to="{name: 'book.edit', params: {bookId: 3}}">
+                    <router-link v-bind:to="{name: 'book.edit', params: {bookId: book.id}}">
                         <button class="btn btn-success">Edit</button>
                     </router-link>
                 </td>
@@ -72,5 +40,22 @@
 </template>
 
 <script>
-    export default {}
+    export default {
+        data: function () {
+            return {
+                books: []
+            }
+        },
+        mounted() {
+            this.getBooks();
+        },
+        methods: {
+            getBooks() {
+                axios.get('/api/books')
+                    .then((res) => {
+                        this.books = res.data;
+                    });
+            }
+        }
+    }
 </script>
