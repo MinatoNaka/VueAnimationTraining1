@@ -49,11 +49,13 @@ class BookController extends Controller
 
     /**
      * @param Book $book
-     * @return bool
+     * @return Book
      * @throws Exception
      */
-    public function destroy(Book $book): bool
+    public function destroy(Book $book): Book
     {
-        return $book->delete();
+        $book->delete();
+
+        return $book;
     }
 }

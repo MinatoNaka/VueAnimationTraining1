@@ -15,6 +15,7 @@
                 <th scope="col">Price</th>
                 <th scope="col">Show</th>
                 <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -32,6 +33,9 @@
                     <router-link v-bind:to="{name: 'book.edit', params: {bookId: book.id}}">
                         <button class="btn btn-success">Edit</button>
                     </router-link>
+                </td>
+                <td>
+                    <button class="btn btn-danger" v-on:click="deleteBook(book.id)">Delete</button>
                 </td>
             </tr>
             </tbody>
@@ -54,6 +58,12 @@
                 axios.get('/api/books')
                     .then((res) => {
                         this.books = res.data;
+                    });
+            },
+            deleteBook(id) {
+                axios.delete('/api/books/' + id)
+                    .then((res) => {
+                        this.getBooks();
                     });
             }
         }
