@@ -35,15 +35,13 @@ class BookController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Book $book
+     * @return bool
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, Book $book): bool
     {
-        //
+        return $book->update($request->all());
     }
 
     /**
