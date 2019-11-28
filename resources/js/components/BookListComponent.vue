@@ -13,6 +13,7 @@
                 <th scope="col">Title</th>
                 <th scope="col">Author</th>
                 <th scope="col">Price</th>
+                <th scope="col">Show</th>
             </tr>
             </thead>
             <tbody>
@@ -21,18 +22,33 @@
                 <td>Book1</td>
                 <td>Author1</td>
                 <td>1000</td>
+                <td>
+                    <router-link v-bind:to="{name: 'book.show', params: {bookId: 1}}">
+                        <button class="btn btn-success">Show</button>
+                    </router-link>
+                </td>
             </tr>
             <tr>
                 <th scope="row">2</th>
                 <td>Book2</td>
                 <td>Author2</td>
                 <td>2000</td>
+                <td>
+                    <router-link v-bind:to="{name: 'book.show', params: {bookId: 2}}">
+                        <button class="btn btn-success">Show</button>
+                    </router-link>
+                </td>
             </tr>
             <tr>
                 <th scope="row">3</th>
                 <td>Book3</td>
                 <td>Author3</td>
                 <td>3000</td>
+                <td>
+                    <router-link v-bind:to="{name: 'book.show', params: {bookId: 3}}">
+                        <button class="btn btn-success">Show</button>
+                    </router-link>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -40,6 +56,5 @@
 </template>
 
 <script>
-    export default {
-    }
+    export default {}
 </script>
