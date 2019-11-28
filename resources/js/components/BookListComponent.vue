@@ -14,6 +14,7 @@
                 <th scope="col">Author</th>
                 <th scope="col">Price</th>
                 <th scope="col">Show</th>
+                <th scope="col">Edit</th>
             </tr>
             </thead>
             <tbody>
@@ -27,6 +28,11 @@
                         <button class="btn btn-success">Show</button>
                     </router-link>
                 </td>
+                <td>
+                    <router-link v-bind:to="{name: 'book.edit', params: {bookId: 1}}">
+                        <button class="btn btn-success">Edit</button>
+                    </router-link>
+                </td>
             </tr>
             <tr>
                 <th scope="row">2</th>
@@ -38,6 +44,11 @@
                         <button class="btn btn-success">Show</button>
                     </router-link>
                 </td>
+                <td>
+                    <router-link v-bind:to="{name: 'book.edit', params: {bookId: 2}}">
+                        <button class="btn btn-success">Edit</button>
+                    </router-link>
+                </td>
             </tr>
             <tr>
                 <th scope="row">3</th>
@@ -47,6 +58,11 @@
                 <td>
                     <router-link v-bind:to="{name: 'book.show', params: {bookId: 3}}">
                         <button class="btn btn-success">Show</button>
+                    </router-link>
+                </td>
+                <td>
+                    <router-link v-bind:to="{name: 'book.edit', params: {bookId: 3}}">
+                        <button class="btn btn-success">Edit</button>
                     </router-link>
                 </td>
             </tr>

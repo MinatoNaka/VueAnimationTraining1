@@ -2,6 +2,7 @@ import VueRouter from 'vue-router';
 import BookListComponent from "./components/BookListComponent";
 import BookCreateComponent from "./components/BookCreateComponent";
 import BookShowComponent from "./components/BookShowComponent";
+import BookEditComponent from "./components/BookEditComponent";
 
 require('./bootstrap');
 
@@ -26,6 +27,12 @@ const router = new VueRouter({
             path: '/books/:bookId',
             name: 'book.show',
             component: BookShowComponent,
+            props: true
+        },
+        {
+            path: '/books/:bookId/edit',
+            name: 'book.edit',
+            component: BookEditComponent,
             props: true
         },
         {
