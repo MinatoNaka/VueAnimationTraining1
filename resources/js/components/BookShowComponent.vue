@@ -1,11 +1,5 @@
 <template>
     <div class="container">
-        <nav class="navbar navbar-dark bg-dark mb-3">
-            <span class="navbar-brand mb-0 h1">SPA Training1</span>
-            <router-link v-bind:to="{name: 'book.list'}">
-                <button class="btn btn-success">List</button>
-            </router-link>
-        </nav>
         <div class="row justify-content-center">
             <div class="col-sm-6">
                 <form>

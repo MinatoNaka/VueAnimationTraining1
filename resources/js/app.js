@@ -1,4 +1,5 @@
 import VueRouter from 'vue-router';
+import HeaderComponent from "./components/HeaderComponent";
 import BookListComponent from "./components/BookListComponent";
 import BookCreateComponent from "./components/BookCreateComponent";
 import BookShowComponent from "./components/BookShowComponent";
@@ -43,5 +44,8 @@ const router = new VueRouter({
 });
 
 const app = new Vue({
-    router
+    router,
+    components: {
+        'header-component': HeaderComponent
+    }
 }).$mount('#app');
