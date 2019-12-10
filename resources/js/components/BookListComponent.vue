@@ -13,7 +13,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="book in books">
+            <tr v-for="book in books" class="animated"
+                v-on:mouseenter="mouseEnterPulse"
+                v-on:mouseleave="mouseLeavePulse">
                 <th scope="row">{{ book.id }}</th>
                 <td>{{ book.title }}</td>
                 <td>{{ book.author }}</td>
@@ -59,6 +61,12 @@
                     .then((res) => {
                         this.getBooks();
                     });
+            },
+            mouseEnterPulse(e) {
+                e.target.classList.add('pulse', 'faster');
+            },
+            mouseLeavePulse(e) {
+                e.target.classList.remove('pulse', 'faster');
             }
         }
     }

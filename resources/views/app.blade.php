@@ -19,7 +19,7 @@
 
     <transition
         name="custom-classes-transition"
-        enter-active-class="animated bounceInDown delay-1s"
+        enter-active-class="animated bounceInUp delay-1s"
         leave-active-class="animated zoomOutRight"
     >
         <router-view></router-view>
