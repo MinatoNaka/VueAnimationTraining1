@@ -18,7 +18,6 @@
     <header-component></header-component>
 
     <transition
-        name="custom-classes-transition"
         enter-active-class="animated bounceInUp delay-1s"
         leave-active-class="animated zoomOutRight"
     >
