@@ -18,7 +18,8 @@
     <header-component></header-component>
 
     <transition
-        enter-active-class="animated bounceInUp delay-1s"
+        mode="out-in"
+        enter-active-class="animated bounceInUp"
         leave-active-class="animated zoomOutRight"
     >
         <router-view></router-view>
