@@ -17,8 +17,13 @@
 <div id="app">
     <header-component></header-component>
 
-    <router-view></router-view>
-
+    <transition
+        name="custom-classes-transition"
+        enter-active-class="animated bounceInDown delay-1s"
+        leave-active-class="animated zoomOutRight"
+    >
+        <router-view></router-view>
+    </transition>
 </div>
 <!-- Scripts -->
 <script src="{{ mix('/build/js/app.js') }}" defer></script>
