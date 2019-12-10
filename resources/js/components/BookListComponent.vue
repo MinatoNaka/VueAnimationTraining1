@@ -12,29 +12,29 @@
                 <th scope="col">Delete</th>
             </tr>
             </thead>
-            <tbody>
-            <tr v-for="book in books" class="animated"
-                v-on:mouseenter="mouseEnterPulse"
-                v-on:mouseleave="mouseLeavePulse">
-                <th scope="row">{{ book.id }}</th>
-                <td>{{ book.title }}</td>
-                <td>{{ book.author }}</td>
-                <td>{{ book.price }}</td>
-                <td>
-                    <router-link v-bind:to="{name: 'book.show', params: {bookId: book.id}}">
-                        <button class="btn btn-success">Show</button>
-                    </router-link>
-                </td>
-                <td>
-                    <router-link v-bind:to="{name: 'book.edit', params: {bookId: book.id}}">
-                        <button class="btn btn-success">Edit</button>
-                    </router-link>
-                </td>
-                <td>
-                    <button class="btn btn-danger" v-on:click="deleteBook(book.id)">Delete</button>
-                </td>
-            </tr>
-            </tbody>
+            <transition-group tag="tbody" leave-active-class="animated hinge">
+                <tr v-for="(book, index) in books" v-bind:key="book.id" class="animated"
+                    v-on:mouseenter="mouseEnterPulse"
+                    v-on:mouseleave="mouseLeavePulse">
+                    <th scope="row">{{ book.id }}</th>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.price }}</td>
+                    <td>
+                        <router-link v-bind:to="{name: 'book.show', params: {bookId: book.id}}">
+                            <button class="btn btn-success">Show</button>
+                        </router-link>
+                    </td>
+                    <td>
+                        <router-link v-bind:to="{name: 'book.edit', params: {bookId: book.id}}">
+                            <button class="btn btn-success">Edit</button>
+                        </router-link>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" v-on:click="deleteBook(book.id, index)">Delete</button>
+                    </td>
+                </tr>
+            </transition-group>
         </table>
     </div>
 </template>
@@ -56,11 +56,15 @@
                         this.books = res.data;
                     });
             },
-            deleteBook(id) {
-                axios.delete('/api/books/' + id)
-                    .then((res) => {
-                        this.getBooks();
-                    });
+            deleteBook(id, index) {
+                let confirmed = window.confirm('削除しますか？');
+
+                if (confirmed) {
+                    axios.delete('/api/books/' + id)
+                        .then((res) => {
+                            this.books.splice(index, 1);
+                        });
+                }
             },
             mouseEnterPulse(e) {
                 e.target.classList.add('pulse', 'faster');
