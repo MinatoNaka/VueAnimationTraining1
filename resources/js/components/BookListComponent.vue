@@ -12,8 +12,8 @@
                 <th scope="col">Delete</th>
             </tr>
             </thead>
-            <transition-group tag="tbody" leave-active-class="animated hinge">
-                <tr v-for="(book, index) in books" v-bind:key="book.id" class="animated"
+            <transition-group tag="tbody" name="book-list" leave-active-class="animated hinge">
+                <tr v-for="(book, index) in books" v-bind:key="book.id"
                     v-on:mouseenter="mouseEnterPulse"
                     v-on:mouseleave="mouseLeavePulse">
                     <th scope="row">{{ book.id }}</th>
@@ -36,6 +36,7 @@
                 </tr>
             </transition-group>
         </table>
+        <button class="btn btn-primary" v-on:click="shuffle">Shuffle</button>
     </div>
 </template>
 
@@ -67,11 +68,20 @@
                 }
             },
             mouseEnterPulse(e) {
-                e.target.classList.add('pulse', 'faster');
+                e.target.classList.add('animated', 'pulse', 'faster');
             },
             mouseLeavePulse(e) {
-                e.target.classList.remove('pulse', 'faster');
-            }
+                e.target.classList.remove('animated', 'pulse', 'faster');
+            },
+            shuffle() {
+                this.books = _.shuffle(this.books);
+            },
         }
     }
 </script>
+
+<style scoped>
+    .book-list-move {
+        transition: transform 1s;
+    }
+</style>
